@@ -8,8 +8,8 @@
 // L'output del prezzo finale va messo fuori in forma umana (con massimo due decimali, per indicare centesimi sul prezzo). Questo richiederà un minimo di ricerca.
 
 // dichiarazione variabili
-let distance;
-let age;
+let distance = 100; // assegnazione solo per prova
+let age = 130;       //assegnazone solo per prova
 let finalPrice;
 const pricePerKm = 0.21;
 const discountMinors = .2;
@@ -20,22 +20,30 @@ Benvenuto alle ferrovie
 Informazioni utili:
     Prezzo al km: ${pricePerKm}€
 Scontistica:
-    - under18: ${discountMinors*100}%
-    - over65: ${discountElderly*100}%
+    - under18: ${discountMinors * 100}%
+    - over65: ${discountElderly * 100}%
 `
 )
 // prompting and initialization
 distance = parseFloat(prompt("Quanti km vuoi percorrere?"));
-console.log("Hai scelto di percorrere " + distance + "km");
-age = parseInt(prompt("Quanti anni hai?"));
-console.log("La tua età è: " + age); 
-// conditions for right result
-finalPrice = distance * pricePerKm;
-console.log("\n\nPrezzo pieno: " + finalPrice + "€");
-if (age < 18) {
-    finalPrice *= (1 - discountMinors);
-} else if (age >= 65) {
-    finalPrice *= (1 - discountElderly);
+if (isNaN(distance) || distance <= 0) {
+    console.log("Distance invalid");
+} else {
+    console.log("\nHai scelto di percorrere " + distance + "km");
+    age = parseInt(prompt("Quanti anni hai?"));
+    if (isNaN(age) || !(age > 0 && age <= 130)) {
+        console.log("Age invalid");
+    } else {
+        console.log("\nLa tua età è: " + age);
+        // conditions for right result
+        finalPrice = distance * pricePerKm;
+        console.log("\n\nPrezzo pieno: " + finalPrice + "€");
+        if (age < 18) {
+            finalPrice *= (1 - discountMinors);
+        } else if (age >= 65) {
+            finalPrice *= (1 - discountElderly);
+        }
+        // displaying the output
+        console.log("Prezzo finale ammonta a: " + finalPrice.toFixed(2) + "€");
+    }
 }
-// displaying the output
-console.log("Prezzo finale ammonta a: " + finalPrice.toFixed(2) + "€");
