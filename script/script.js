@@ -27,8 +27,10 @@ Scontistica:
 // prompting and initialization
 distance = parseFloat(prompt("Quanti km vuoi percorrere?"));
 if (!(isNaN(distance)) && !(distance <= 0)) {
+    // se la distance NON è nan E se la distanza NON è negativa 
     console.log("\nHai scelto di percorrere " + distance + "km");
     age = parseInt(prompt("Quanti anni hai?"));
+    // se l'età è nan OPPURE se l'età non è compresa tra 0 e 130, TUTTO NEGATO
     if (!(isNaN(age) || !(age > 0 && age <= 130))) {
         console.log("\nLa tua età è: " + age);
         // conditions for right result
