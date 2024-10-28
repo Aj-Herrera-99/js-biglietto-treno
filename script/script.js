@@ -26,14 +26,10 @@ Scontistica:
 )
 // prompting and initialization
 distance = parseFloat(prompt("Quanti km vuoi percorrere?"));
-if (isNaN(distance) || distance <= 0) {
-    console.log("Distance invalid");
-} else {
+if (!(isNaN(distance) || distance <= 0)) {
     console.log("\nHai scelto di percorrere " + distance + "km");
     age = parseInt(prompt("Quanti anni hai?"));
-    if (isNaN(age) || !(age > 0 && age <= 130)) {
-        console.log("Age invalid");
-    } else {
+    if (!(isNaN(age) || !(age > 0 && age <= 130))) {
         console.log("\nLa tua età è: " + age);
         // conditions for right result
         finalPrice = distance * pricePerKm;
@@ -45,5 +41,9 @@ if (isNaN(distance) || distance <= 0) {
         }
         // displaying the output
         console.log("Prezzo finale ammonta a: " + finalPrice.toFixed(2) + "€");
+    } else {
+        console.log("Age invalid");
     }
+} else {
+    console.log("Distance invalid");
 }
